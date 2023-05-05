@@ -14,27 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.DoubleSupplier;
 
-/**
- * Units are inches :0
- */
 @Config
 public class TwoWheelLocalizer extends TwoTrackingWheelLocalizer implements Localizer {
-
-    // TODO: TUNE
-    public static double PARALLEL_X = 0;
-    public static double PARALLEL_Y = 0;
-
-    // TODO: TUNE
-    public static double PERPENDICULAR_X = 0;
-    public static double PERPENDICULAR_Y = 0;
 
     private final DoubleSupplier horizontalPosition, lateralPosition, imuAngle;
     private final DoubleSupplier horizontalVelocity, lateralVelocity;
 
     public TwoWheelLocalizer(RobotHardware robot) {
         super(Arrays.asList(
-                new Pose2d(PARALLEL_X, PARALLEL_Y, 0),
-                new Pose2d(PERPENDICULAR_X, PERPENDICULAR_Y, Math.toRadians(90))
+                new Pose2d(RobotConstants.PARALLEL_X, RobotConstants.PARALLEL_Y, 0),
+                new Pose2d(RobotConstants.PERPENDICULAR_X, RobotConstants.PERPENDICULAR_Y, Math.toRadians(90))
         ));
 
         this.horizontalPosition = () -> robot.parallelPod.getPosition();
@@ -45,8 +34,6 @@ public class TwoWheelLocalizer extends TwoTrackingWheelLocalizer implements Loca
         this.lateralVelocity = () -> robot.leftPerpindicularPod.getRawVelocity();
 
         this.imuAngle = robot::getAngle;
-
-        // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
     }
 
     public static double encoderTicksToInches(double ticks) {

@@ -70,6 +70,7 @@ public class RobotHardware {
         leftPerpindicularPod = new MotorEx(hardwareMap, "leftPerpindicularPod").encoder;
         rightPerpindicularPod = new MotorEx(hardwareMap, "rightPerpindicularPod").encoder;
 
+        // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
     }
 
     public void reset() {
