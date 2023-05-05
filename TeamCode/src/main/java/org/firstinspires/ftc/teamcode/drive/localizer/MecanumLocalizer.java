@@ -117,4 +117,8 @@ public class MecanumLocalizer extends MecanumDrive implements Localizer {
         backRight.setPower(v2);
         frontRight.setPower(v3);
     }
+
+    public static double rpmToVelocity(double rpm) {
+        return rpm * RobotConstants.GEAR_RATIO_MECHANUM * 2 * Math.PI * RobotConstants.WHEEL_RADIUS_MECHANUM / 60.0;
+    }
 }

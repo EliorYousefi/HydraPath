@@ -10,25 +10,9 @@ import org.firstinspires.ftc.teamcode.drive.util.Pose;
 
 @Config
 public class PositionCommand extends CommandBase {
-    public static double ALLOWED_TRANSLATIONAL_ERROR = 0.25;
-    public static double ALLOWED_HEADING_ERROR = Math.toRadians(1);
-
-    public static double xP = 0.022;
-    public static double xD = 0.03;
-    public static double xF = 0;
-
-    public static double yP = 0.022;
-    public static double yD = 0.03;
-    public static double yF = 0;
-
-    public static double hP = 0.3;
-    public static double hD = 0.05;
-    public static double hF = 0;
-
-
-    public static PIDFController xController = new PIDFController(xP, 0.0, xD, xF);
-    public static PIDFController yController = new PIDFController(yP, 0.0, yD, yF);
-    public static PIDFController hController = new PIDFController(hP, 0.0, hD, hF);
+    public static PIDFController xController = new PIDFController(RobotConstants.xP, 0.0, RobotConstants.xD, RobotConstants.xF);
+    public static PIDFController yController = new PIDFController(RobotConstants.yP, 0.0, RobotConstants.yD, RobotConstants.yF);
+    public static PIDFController hController = new PIDFController(RobotConstants.hP, 0.0, RobotConstants.hD, RobotConstants.hF);
     public static double max_power = 1;
     public static double max_heading = 0.5;
 
@@ -70,7 +54,7 @@ public class PositionCommand extends CommandBase {
         Globals.error = error;
         Globals.targetPose = targetPose;
 
-        boolean reached = ((Math.hypot(error.x, error.y) < ALLOWED_TRANSLATIONAL_ERROR) && (Math.abs(error.heading) < ALLOWED_HEADING_ERROR));
+        boolean reached = ((Math.hypot(error.x, error.y) < RobotConstants.ALLOWED_TRANSLATIONAL_ERROR) && (Math.abs(error.heading) < RobotConstants.ALLOWED_HEADING_ERROR));
         Globals.reached = reached;
 
         if (reached && delayTimer == null) {

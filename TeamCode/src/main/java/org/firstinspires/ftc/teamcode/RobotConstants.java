@@ -14,6 +14,7 @@ public class RobotConstants {
     public static double trackWidth = 0;
     public static double trackLength = 0;
     public static double lateralMultiplayer = 0;
+    public static double RPM = 312;
 
     public static double TICKS_PER_REV_REV_BORE_ENCODER = 8192; // TODO: tune
     public static double WHEEL_RADIUS_DEAD_WHEELS = .98; // in TODO: tune
@@ -34,4 +35,21 @@ public class RobotConstants {
     public static double TICKS_PER_REV_GO_BILDA = 1; // rev bore encoder
     public static double WHEEL_RADIUS_MECHANUM = 1.88976378;
     public static double GEAR_RATIO_MECHANUM = 1;
+
+
+
+    public static double ALLOWED_TRANSLATIONAL_ERROR = 0.25;
+    public static double ALLOWED_HEADING_ERROR = Math.toRadians(1);
+
+    public static double xP = 0.022;
+    public static double xD = 0.03;
+    public static double xF = 0;
+
+    public static double yP = 0.022;
+    public static double yD = 0.03;
+    public static double yF = 0;
+
+    public static double hP = 0.3;
+    public static double hD = 0.05;
+    public static double hF = 0;
 }
